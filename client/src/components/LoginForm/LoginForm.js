@@ -1,24 +1,23 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {authActionLogin, clearAuth} from "../../actions/actionCreator";
-import {Redirect} from 'react-router-dom';
+import { connect } from 'react-redux';
+import { authActionLogin, clearAuth } from '../../actions/actionCreator';
+import { Redirect } from 'react-router-dom';
 import styles from './LoginForm.module.sass';
-import {Field, reduxForm} from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 import FormInput from '../FormInput/FormInput';
 import customValidator from '../../validators/validator';
 import Schems from '../../validators/validationSchems';
 import Error from '../../components/Error/Error';
 
+class LoginForm extends React.Component{
 
-class LoginForm extends React.Component {
+  componentWillUnmount () {
+    this.props.authClear();
+  }
 
-    componentWillUnmount() {
-        this.props.authClear();
-    }
-
-    clicked = (values) => {
-        this.props.loginRequest(values);
-    };
+  clicked = (values) => {
+    this.props.loginRequest(values);
+  };
 
 
     render() {
@@ -63,18 +62,18 @@ class LoginForm extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    const {auth} = state;
-    return {auth};
+  const { auth } = state;
+  return { auth };
 };
 
 const mapDispatchToProps = (dispatch) => (
-    {
-        loginRequest: (data) => dispatch(authActionLogin(data)),
-        authClear: () => dispatch(clearAuth())
-    }
+  {
+    loginRequest: (data) => dispatch(authActionLogin(data)),
+    authClear: () => dispatch(clearAuth()),
+  }
 );
 
 export default connect(mapStateToProps, mapDispatchToProps)(reduxForm({
-    form: 'login',
-    validate: customValidator(Schems.LoginSchem)
+  form: 'login',
+  validate: customValidator(Schems.LoginSchem),
 })(LoginForm));
