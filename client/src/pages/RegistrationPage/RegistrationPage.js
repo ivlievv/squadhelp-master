@@ -44,8 +44,8 @@ const RegistrationPage = (props) => {
                 <h2>CREATE AN ACCOUNT</h2>
                 <h4>We always keep your name and email address private.</h4>
             </div>
-          <RegistrationForm/>
         </div>
+          <RegistrationForm/>
         <div className={styles.footer}>
           <div className={styles.articlesMainContainer}>
             <div className={styles.ColumnContainer}>
@@ -55,8 +55,8 @@ const RegistrationPage = (props) => {
                   <span className={styles.orangeSpan}>FAQs</span>
                   or send us a <span className={styles.orangeSpan}>message</span>
                   . For assistance with launching a contest,
-                you can also call us at (877) 355-3585 or schedule a
-                  <span className={styles.orangeSpan}>Branding Consultation</span>
+                you can also call us at (877) 355-3585 or schedule a <span
+                  className={styles.orangeSpan}>Branding Consultation</span>
               </div>
             </div>
           </div>

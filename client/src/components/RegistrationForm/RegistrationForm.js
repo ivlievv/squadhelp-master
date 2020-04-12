@@ -30,16 +30,18 @@ class RegistrationForm extends React.Component{
     });
   };
 
+  formInputClasses = {
+    classInputStyle: styles.input,
+    classNotValid:  styles.notValid,
+    classValid:  styles.valid,
+    classInputContainer: styles.inputContainer,
+    classWarningForContainer: styles.fieldWarning,
+  };
+
   render () {
     const {handleSubmit, submitting, auth, authClear} = this.props;
     const {error} = auth;
-    const formInputClasses = {
-      container: styles.inputContainer,
-      input: styles.input,
-      warning: styles.fieldWarning,
-      notValid: styles.notValid,
-      valid: styles.valid,
-    };
+
     return (
       <div className={ styles.signUpFormContainer }>
         { error && <Error data={ error.data }
@@ -49,14 +51,14 @@ class RegistrationForm extends React.Component{
           <div className={ styles.row }>
             <Field
               name='firstName'
-              classes={ formInputClasses }
+              {...this.formInputClasses}
               component={ FormInput }
               type='text'
               label='First name'
             />
             <Field
               name='lastName'
-              classes={ formInputClasses }
+              {...this.formInputClasses}
               component={ FormInput }
               type='text'
               label='Last name'
@@ -65,14 +67,14 @@ class RegistrationForm extends React.Component{
           <div className={ styles.row }>
             <Field
               name='displayName'
-              classes={ formInputClasses }
+              {...this.formInputClasses}
               component={ FormInput }
               type='text'
               label='Display Name'
             />
             <Field
               name='email'
-              classes={ formInputClasses }
+              {...this.formInputClasses}
               component={ FormInput }
               type='text'
               label='Email Address'
@@ -81,14 +83,14 @@ class RegistrationForm extends React.Component{
           <div className={ styles.row }>
             <Field
               name='password'
-              classes={ formInputClasses }
+              {...this.formInputClasses}
               component={ FormInput }
               type='password'
               label='Password'
             />
             <Field
               name='confirmPassword'
-              classes={ formInputClasses }
+              {...this.formInputClasses}
               component={ FormInput }
               type='password'
               label='Password confirmation'

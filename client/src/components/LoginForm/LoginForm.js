@@ -7,6 +7,8 @@ import FormInput from '../FormInput/FormInput';
 import customValidator from '../../validators/validator';
 import Schems from '../../validators/validationSchems';
 import Error from '../../components/Error/Error';
+import PropTypes from 'prop-types';
+
 
 class LoginForm extends React.Component{
 
@@ -18,33 +20,32 @@ class LoginForm extends React.Component{
     this.props.loginRequest(values);
   };
 
-  render () {
-    const {error, isFetching} = this.props.auth;
-    const {handleSubmit, submitting, authClear} = this.props;
 
-    const formInputClasses = {
-      container: styles.inputContainer,
-      input: styles.input,
-      warning: styles.fieldWarning,
-      notValid: styles.notValid,
-      valid: styles.valid,
+  formInputClasses = {
+      classInputStyle: styles.input,
+      classNotValid:  styles.notValid,
+      classValid:  styles.valid,
+      classInputContainer: styles.inputContainer,
+      classWarningForContainer: styles.fieldWarning,
     };
 
+  render () {
+
+    const {isFetching} = this.props.auth;
+    const {handleSubmit, submitting} = this.props;
+
     return (
-      <div className={ styles.loginForm }>
-        { error && <Error data={ error.data } status={ error.status }
-                          clearError={ authClear }/> }
         <form onSubmit={ handleSubmit(this.submit) }>
           <Field
             name='email'
-            classes={ formInputClasses }
+            {...this.formInputClasses}
             component={ FormInput }
             type='text'
             label='Email Address'
           />
           <Field
             name='password'
-            classes={ formInputClasses }
+            {...this.formInputClasses}
             component={ FormInput }
             type='password'
             label='password'
@@ -56,7 +57,6 @@ class LoginForm extends React.Component{
               : 'LOGIN' }</span>
           </button>
         </form>
-      </div>
     );
   }
 }
