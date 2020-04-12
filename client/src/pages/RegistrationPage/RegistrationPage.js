@@ -4,13 +4,17 @@ import RegistrationForm from '../../components/RegistrationForm/RegistrationForm
 import styles from './RegistrationPage.module.sass';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { clearErrorSignUpAndLogin } from '../../actions/actionCreator';
+import {authActionRegister, clearAuth, clearErrorSignUpAndLogin} from '../../actions/actionCreator';
 import CONSTANTS from '../../constants';
 import article from './article'
+import Error from "../../components/Error/Error";
+import _ from 'lodash';
 
-const RegistrationPage = (props) => {
+const RegistrationPage = ({clearError, authClear, register, error, ...props}) => {
 
-  props.clearError();
+    const handleSubmit = data => {
+        register(_.omit(data, ['agreeOfTerms', 'agreeOfTerms']));
+    };
 
   const articlesElement = article.map(article => (
           <>
@@ -22,10 +26,6 @@ const RegistrationPage = (props) => {
           </>
       )
   );
-
-  const changeRoute = () => {
-    props.history.replace('/');
-  };
 
 
   return (
@@ -40,12 +40,20 @@ const RegistrationPage = (props) => {
               </Link>
             </div>
           </div>
-            <div className={ styles.headerFormContainer }>
-                <h2>CREATE AN ACCOUNT</h2>
-                <h4>We always keep your name and email address private.</h4>
+            <div className={styles.signUpFormContainer}>
+                {error && <Error data={error.data} status={error.status}
+                                 clearError={authClear}/>}
+                <div className={styles.headerFormContainer}>
+                    <h2>
+                        CREATE AN ACCOUNT
+                    </h2>
+                    <h4>
+                        We always keep your name and email address private.
+                    </h4>
+                </div>
+                <RegistrationForm onSubmit={handleSubmit}/>
             </div>
         </div>
-          <RegistrationForm/>
         <div className={styles.footer}>
           <div className={styles.articlesMainContainer}>
             <div className={styles.ColumnContainer}>
@@ -65,10 +73,21 @@ const RegistrationPage = (props) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = state => (
+    {
+        auth: state.auth,
+        initialValues: {
+            role: CONSTANTS.CUSTOMER
+        },
+    }
+);
+
+const mapDispatchToProps = dispatch => {
   return {
-    clearError: () => dispatch(clearErrorSignUpAndLogin()),
+      clearError: () => dispatch(clearErrorSignUpAndLogin()),
+      authClear: () => dispatch(clearAuth()),
+      register: data => dispatch(authActionRegister(data)),
   };
 };
 
-export default connect(null, mapDispatchToProps)(RegistrationPage);
+export default connect(mapStateToProps, mapDispatchToProps)(RegistrationPage);
