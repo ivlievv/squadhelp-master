@@ -42,16 +42,9 @@ class RegistrationForm extends React.Component{
     };
     return (
       <div className={ styles.signUpFormContainer }>
-        { error && <Error data={ error.data } status={ error.status }
+        { error && <Error data={ error.data }
+                          status={ error.status }
                           clearError={ authClear }/> }
-        <div className={ styles.headerFormContainer }>
-          <h2>
-            CREATE AN ACCOUNT
-          </h2>
-          <h4>
-            We always keep your name and email address private.
-          </h4>
-        </div>
         <form onSubmit={ handleSubmit(this.clicked) }>
           <div className={ styles.row }>
             <Field
@@ -102,11 +95,13 @@ class RegistrationForm extends React.Component{
             />
           </div>
           <div className={ styles.choseRoleContainer }>
-            <Field name='role' type='radio' value={ CONSTANTS.CUSTOMER }
+            <Field name='role' type='radio'
+                   value={ CONSTANTS.CUSTOMER }
                    strRole='Join As a Buyer'
                    infoRole='I am looking for a Name, Logo or Tagline for my business, brand or product.'
                    component={ RoleInput } id={ CONSTANTS.CUSTOMER }/>
-            <Field name='role' type='radio' value={ CONSTANTS.CREATOR }
+            <Field name='role' type='radio'
+                   value={ CONSTANTS.CREATOR }
                    strRole='Join As a Creative'
                    infoRole='I plan to submit name ideas, Logo designs or sell names in Domain Marketplace.'
                    component={ RoleInput } id={ CONSTANTS.CREATOR }/>

@@ -35,9 +35,15 @@ const RegistrationPage = (props) => {
             <Logo src={`${CONSTANTS.STATIC_IMAGES_PATH}logo.png`}/>
             <div className={styles.linkLoginContainer}>
               <Link to='/login'
-                    style={{textDecoration: 'none'}}><span>Login</span></Link>
+                    style={{textDecoration: 'none'}}>
+                  <span>Login</span>
+              </Link>
             </div>
           </div>
+            <div className={ styles.headerFormContainer }>
+                <h2>CREATE AN ACCOUNT</h2>
+                <h4>We always keep your name and email address private.</h4>
+            </div>
           <RegistrationForm/>
         </div>
         <div className={styles.footer}>
@@ -45,12 +51,12 @@ const RegistrationPage = (props) => {
             <div className={styles.ColumnContainer}>
               {articlesElement}
               <div className={styles.article}>
-                Check out our <span className={styles.orangeSpan}>FAQs</span> or
-                send us a <span
-                  className={styles.orangeSpan}>message</span>. For assistance
-                with launching a contest,
-                you can also call us at (877) 355-3585 or schedule a <span
-                  className={styles.orangeSpan}>Branding Consultation</span>
+                Check out our
+                  <span className={styles.orangeSpan}>FAQs</span>
+                  or send us a <span className={styles.orangeSpan}>message</span>
+                  . For assistance with launching a contest,
+                you can also call us at (877) 355-3585 or schedule a
+                  <span className={styles.orangeSpan}>Branding Consultation</span>
               </div>
             </div>
           </div>
