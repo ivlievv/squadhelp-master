@@ -1,5 +1,5 @@
 const WebSocket = require('./WebSocket');
-const CONSTANTS = require('../../../constants');
+const CONSTANTS = require('../../constants');
 
 class NotificationController extends WebSocket{
 
@@ -17,4 +17,4 @@ class NotificationController extends WebSocket{
   }
 }
 
-module.exports = NotificationController;
+module.exports = new NotificationController();
