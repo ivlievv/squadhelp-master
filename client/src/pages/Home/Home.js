@@ -8,7 +8,7 @@ import styles from './Home.module.sass';
 import carouselConstants from '../../carouselConstants';
 import {connect} from 'react-redux';
 import Spinner from '../../components/Spinner/Spinner';
-
+import StartBlock from "../../components/StartBlock/StartBlock";
 
 const Home = (props) => {
     const [index, setIndex] = useState(0);
@@ -186,6 +186,7 @@ const Home = (props) => {
                         <SlideBar images={carouselConstants.feedbackSliderImages}
                                   carouselType={carouselConstants.FEEDBACK_SLIDER}/>
                     </div>
+                    <StartBlock/>
                 </div>
                 <Footer/>
             </>)}
