@@ -4,48 +4,48 @@ import styles from "./TransactionTable.module.sass"
 const transactions = [
     {
         id: 1,
-        isIncome: true,
-        sum: "500"
+        operationType: "INCOME",
+        sum: 500
     },
     {
         id: 2,
-        isIncome: false,
-        sum: "- 350"
+        operationType: "EXPANSE",
+        sum: -350
     },
     {
         id: 3,
-        isIncome: true,
-        sum: "1700"
+        operationType: "INCOME",
+        sum: 1700
     },
     {
         id: 4,
-        isIncome: true,
-        sum: "2000"
+        operationType: "INCOME",
+        sum: 2000
     },
     {
         id: 5,
-        isIncome: false,
-        sum: "- 750"
+        operationType: "EXPANSE",
+        sum: -750
     },
     {
         id: 6,
-        isIncome: false,
-        sum: "- 700"
+        operationType: "EXPANSE",
+        sum: -700
     },
     {
         id: 7,
-        isIncome: true,
-        sum: "1500"
+        operationType: "INCOME",
+        sum: 1500
     },
 ];
 
 const TransactionTable = () => {
 
     const renderTransaction = transactions => {
-        return transactions.map(({id, isIncome, sum}) => (
+        return transactions.map(({id, operationType, sum}) => (
             <tr>
                 <th>{id}</th>
-                <th>{isIncome ? "Income" : "Expanse"}</th>
+                <th>{operationType}</th>
                 <th>{sum}</th>
             </tr>
         ))
