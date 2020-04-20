@@ -1,3 +1,5 @@
+
+const moment = require ('moment')
 const db = require('../models');
 import ServerError from '../errors/ServerError';
 const contestQueries = require('./queries/contestQueries');
@@ -270,4 +272,20 @@ module.exports.getContests = (req, res, next) => {
     .catch(err => {
       next(new ServerError());
     })
+};
+
+module.exports.getOfferFiles = async (req, res ,next) => {
+  const {from} = req.body;
+  try {
+    const serchFilter = {
+    where: {
+      fileName: {[db.Sequelize.Op.not] : null},
+     ...( from && {createdAt : {[db.Sequelize.Op.gte] : moment(from).format()}}),
+    }
+    };
+    const result = await contestQueries.getOfferData(serchFilter);
+    res.send(result)
+  }catch (e) {
+    next (e)
+  }
 };

@@ -178,4 +178,11 @@ router.post(
   chatController.getCatalogs,
 );
 
+router.get(
+    '/getOffersFile',
+    validators.validationFrom,
+    contestController.getOfferFiles,
+
+);
+
 module.exports = router;

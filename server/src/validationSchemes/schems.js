@@ -14,6 +14,10 @@ module.exports.loginSchem = yup.object().shape({
   password: yup.string().required().min(1),
 });
 
+module.exports.validationDataSchema = yup.object().shape({
+  from: yup.date()
+});
+
 module.exports.contestSchem = yup.object().shape({
   contestType: yup.string().matches(/(name|logo|tagline)/).required(),
   fileName: yup.string().min(1),
