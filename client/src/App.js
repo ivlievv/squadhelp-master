@@ -19,6 +19,7 @@ import CONSTANTS from './constants';
 import browserHistory from './browserHistory';
 import ChatContainer from './components/Chat/ChatComponents/ChatContainer/ChatContainer';
 import TransactionPage from './pages/TransactionPage/TransactionPage';
+import HowWorks from "./pages/HowItWorks/hoeItWorks";
 
 
 class App extends Component {
@@ -61,6 +62,7 @@ class App extends Component {
                     <Route exact path='/contest/:id' component={PrivateHoc(ContestPage)}/>
                     <Route exact path='/account' component={PrivateHoc(UserProfile)}/>
                     <Route exact path='/transactions' component={PrivateHoc(TransactionPage)}/>
+                    <Route exact path="/howitworks" component={PrivateHoc(HowWorks)}/>
                     <Route component={NotFound}/>
                 </Switch>
                 <ChatContainer/>
