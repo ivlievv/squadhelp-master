@@ -4,7 +4,9 @@ import Header from "../../components/Header/Header";
 import Video from "./Video/Video";
 import FiveSteps from "./FiveSteps";
 import StartContest from "./StartContest";
-import Questions from "./Question";
+import QuestionsText from "./QuestionText";
+import Question from "./Questions";
+import Footer from "../../components/Footer/Footer";
 
 class HowWorks extends Component{
     constructor(props) {
@@ -18,7 +20,9 @@ class HowWorks extends Component{
                 <Video/>
                 <FiveSteps/>
                 <StartContest/>
-                <Questions/>
+                <QuestionsText/>
+                <Question/>
+                <Footer/>
             </div>
 
         )

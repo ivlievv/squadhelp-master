@@ -1,7 +1,7 @@
 import React from "react";
-import styles from './Questions.module.sass'
+import styles from './QuestionsText.module.sass'
 
-const Questions = () => {
+const QuestionsText = () => {
     return(
         <div className={styles.container}>
             <div className={styles.titleContainer}>
@@ -112,4 +112,4 @@ const Questions = () => {
     )
 }
 
-export default Questions
+export default QuestionsText;
