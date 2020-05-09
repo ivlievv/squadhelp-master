@@ -9,9 +9,6 @@ import Question from "./Questions";
 import Footer from "../../components/Footer/Footer";
 
 class HowWorks extends Component{
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (
